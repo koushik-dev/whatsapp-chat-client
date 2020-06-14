@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Home/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -26,11 +26,3 @@
   color: #42b983;
 }
 </style>
-<script>
-import Home from "./views/Home";
-export default {
-  components: {
-    Home
-  }
-}
-</script>
