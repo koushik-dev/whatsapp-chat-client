@@ -1,0 +1,9 @@
+:root {
+    --app-color: #368c7d;
+    --bg-color: #ece5dd;
+    --msg-color: #dbf6c5;
+}
+body {
+    font-family: 'poppins';
+    background-color: var(--bg-color);
+}
