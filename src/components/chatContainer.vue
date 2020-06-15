@@ -1,9 +1,14 @@
 <template>
   <div class="chat-container flex flex-col h-screen">
     <header class="chat__header flex px-1 py-2 items-center text-white">
-      <span class="material-icons">keyboard_backspace</span>
-      <Avatar/>
-      <div class="header__title flex flex-col justify-start ml-2 flex-1 text-left">
+      <router-link :to="'/home/' + this.$route.params.name">
+        <span class="material-icons">keyboard_backspace</span>
+        <Avatar />
+      </router-link>
+
+      <div
+        class="header__title flex flex-col justify-start ml-2 flex-1 text-left"
+      >
         <p>Jane Doe</p>
         <p class="header__title__status font-light">Last seen now</p>
       </div>
@@ -11,7 +16,11 @@
       <span class="material-icons">more_vert</span>
     </header>
     <div class="container__messages flex flex-col overflow-y-scroll h-full">
-      <message-card v-for="msg in messages" :key="msg.id" :msg="msg"></message-card>
+      <message-card
+        v-for="msg in messages"
+        :key="msg.id"
+        :msg="msg"
+      ></message-card>
     </div>
     <messageForm @ping="appendMsg" />
   </div>
@@ -32,6 +41,7 @@ export default {
       messages: []
     };
   },
+  mounted() {},
   sockets: {
     incomingMessage(data) {
       this.messages.push(data);
@@ -70,5 +80,9 @@ export default {
 }
 .header__title__status {
   font-size: 12px;
+}
+.router-link-active {
+  display: flex;
+  align-items: center;
 }
 </style>
