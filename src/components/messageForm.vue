@@ -36,7 +36,11 @@ export default {
   methods: {
     submit() {
       let input = document.querySelector(".chat__msg");
-      this.$socket.emit("chat-message", input.value, this.$route.params.name);
+      this.$socket.emit("chat-message", {
+        msg: input.value,
+        room: this.$route.params.name,
+        user: sessionStorage.getItem("user-name")
+      });
       this.$emit("ping", input.value);
       input.value = "";
       this.autoResize({ target: input });

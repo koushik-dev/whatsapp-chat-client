@@ -84,7 +84,7 @@ export default {
       this.show = !this.show;
     },
     optionClose(name) {
-      this.$emit("add", name)
+      this.$emit("add", name);
       this.toggle();
     },
     activeTab(index) {
@@ -95,9 +95,7 @@ export default {
       let el = document.querySelector(".highlighter"),
         idx = this.tab,
         li = document.querySelectorAll("#pages li")[idx],
-        width = parseFloat(
-          getComputedStyle(li).width
-        );
+        width = parseFloat(getComputedStyle(li).width);
       el.style.left = li.offsetLeft + "px";
       el.style.width = width + "px";
     }

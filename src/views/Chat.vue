@@ -9,7 +9,11 @@ export default {
     chatContainer
   },
   mounted() {
-    this.$socket.emit('join-group', this.$route.params.name, sessionStorage.getItem('user-name'));
+    this.$socket.emit(
+      "join-group",
+      this.$route.params.name,
+      sessionStorage.getItem("user-name")
+    );
   }
 };
 </script>

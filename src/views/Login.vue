@@ -29,14 +29,13 @@ header {
 <script>
 export default {
   created() {
-    if(sessionStorage.getItem('user-name'))
-      this.$router.push('home');
+    if (sessionStorage.getItem("user-name")) this.$router.push("home");
   },
   methods: {
     login({ target: { elements } }) {
       let name = elements[0].value;
       if (name) {
-        sessionStorage.setItem('user-name', name);
+        sessionStorage.setItem("user-name", name);
         this.$router.push({ name: "Home" });
       }
     }

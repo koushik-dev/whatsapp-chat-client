@@ -1,7 +1,11 @@
 <template>
   <div class="home text-white">
     <home-header @add="groupAdd" />
-    <router-link :to="'/chat/'+ room.name" v-for="(room, index) in rooms" :key="index">
+    <router-link
+      :to="'/chat/' + room.name"
+      v-for="(room, index) in rooms"
+      :key="index"
+    >
       <user-card :room="room" />
     </router-link>
   </div>
@@ -21,14 +25,14 @@ export default {
   },
   mounted() {
     this.$axios.get(`http://localhost:3000/rooms`).then(({ data }) => {
-      this.rooms = data
+      this.rooms = data;
     });
   },
   methods: {
     groupAdd(name) {
-      this.rooms.push( {
+      this.rooms.push({
         name
-      })
+      });
     }
   }
 };
