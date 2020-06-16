@@ -1,6 +1,6 @@
 <template>
   <header class="header flex pt-3 flex-wrap items-center">
-    <p class="flex-1 text-left px-2">Whatsapp</p>
+    <p class="flex-1 text-left px-2">WhatsApp</p>
     <span class="material-icons mr-2">search</span>
     <!-- more options -->
     <span
@@ -10,14 +10,14 @@
       @click="toggle"
       >more_vert</span
     >
-    <more-options v-if="show" @close="toggle" />
+    <more-options v-if="show" @close="optionClose" />
 
     <!-- pages -->
     <section class="section mt-6 relative">
       <ul class="flex items-center" id="pages">
         <li
           tabindex="0"
-          class="flex pb-2"
+          class="flex pb-2 px-2"
           @keypress.enter="activeTab(0)"
           @click="activeTab(0)"
         >
@@ -73,12 +73,19 @@ export default {
     return {
       show: false,
       tabs: ["CAM", "CHATS", "STATUS", "CALLS"],
-      tab: 1
+      tab: 0
     };
+  },
+  mounted() {
+    this.activeTab(1);
   },
   methods: {
     toggle() {
       this.show = !this.show;
+    },
+    optionClose(name) {
+      this.$emit("add", name)
+      this.toggle();
     },
     activeTab(index) {
       this.tab = index;
@@ -87,11 +94,11 @@ export default {
     highlight() {
       let el = document.querySelector(".highlighter"),
         idx = this.tab,
+        li = document.querySelectorAll("#pages li")[idx],
         width = parseFloat(
-          getComputedStyle(document.querySelectorAll("#pages li")[idx]).width
-        ),
-        px = !idx ? 0 : width * (idx - 1) + 24;
-      el.style.left = px + "px";
+          getComputedStyle(li).width
+        );
+      el.style.left = li.offsetLeft + "px";
       el.style.width = width + "px";
     }
   }

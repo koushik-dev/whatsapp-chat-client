@@ -1,6 +1,6 @@
 <template>
   <div class="home text-white">
-    <home-header />
+    <home-header @add="groupAdd" />
     <router-link :to="'/chat/'+ room.name" v-for="(room, index) in rooms" :key="index">
       <user-card :room="room" />
     </router-link>
@@ -24,6 +24,12 @@ export default {
       this.rooms = data
     });
   },
-  methods: {}
+  methods: {
+    groupAdd(name) {
+      this.rooms.push( {
+        name
+      })
+    }
+  }
 };
 </script>

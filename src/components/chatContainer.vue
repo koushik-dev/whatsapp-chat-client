@@ -1,7 +1,7 @@
 <template>
   <div class="chat-container flex flex-col h-screen">
     <header class="chat__header flex px-1 py-2 items-center text-white">
-      <router-link :to="'/home/' + this.$route.params.name">
+      <router-link to="/home" class="flex items-center" @click.native="leaveRoom">
         <span class="material-icons">keyboard_backspace</span>
         <Avatar />
       </router-link>
@@ -9,18 +9,19 @@
       <div
         class="header__title flex flex-col justify-start ml-2 flex-1 text-left"
       >
-        <p>Jane Doe</p>
+        <p>{{roomName}}</p>
         <p class="header__title__status font-light">Last seen now</p>
       </div>
       <span class="material-icons mx-2">call</span>
       <span class="material-icons">more_vert</span>
     </header>
     <div class="container__messages flex flex-col overflow-y-scroll h-full">
-      <message-card
+      <component
+        :is="component(msg.isMsg)"
         v-for="msg in messages"
         :key="msg.id"
         :msg="msg"
-      ></message-card>
+      ></component>
     </div>
     <messageForm @ping="appendMsg" />
   </div>
@@ -29,33 +30,53 @@
 <script>
 import messageCard from "./messageCard.vue";
 import messageForm from "./messageForm.vue";
+import notificationCard from "./notificationCard.vue";
 import Avatar from "./avatar.vue";
 export default {
   components: {
     messageCard,
     messageForm,
-    Avatar
+    Avatar,
+    notificationCard
   },
   data() {
     return {
-      messages: []
+      messages: [],
+      roomName: ''
     };
   },
-  mounted() {},
+  mounted() {
+    this.roomName = this.$route.params.name;
+  },
   sockets: {
     incomingMessage(data) {
       this.messages.push(data);
       this.scrollToLatest();
+    },
+    notification(data) {
+      this.messages.push({
+        id: Math.random(),
+        text: data,
+        isMsg: false
+      });
+      this.scrollToLatest();
     }
   },
   methods: {
+    component(isMsg) {
+      return isMsg ? 'messageCard' : 'notificationCard';
+    },
+    leaveRoom() {
+      this.$socket.emit('leave-group', this.roomName)
+    },
     appendMsg(msg) {
       this.messages.push({
         id: Math.random(),
         text: msg,
         timeStamp: new Date(),
         name: "Jane Doe",
-        mine: true
+        mine: true,
+        isMsg: true
       });
       let el = document.querySelector(".container__messages");
       setTimeout(() => {
@@ -80,9 +101,5 @@ export default {
 }
 .header__title__status {
   font-size: 12px;
-}
-.router-link-active {
-  display: flex;
-  align-items: center;
 }
 </style>

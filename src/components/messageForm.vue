@@ -1,10 +1,11 @@
 <template>
-  <form class="chat flex items-center relative my-1">
+  <form class="chat flex items-center relative my-1 mb-2">
     <span class="material-icons absolute chat__smiley self-end">tag_faces</span>
     <textarea
       class="chat__msg rounded-full tracking-wide px-10 p-2 ml-1 w-full resize-none"
       rows="1"
       placeholder="Type a message"
+      @keypress.enter.exact.prevent="submit"
       @input="autoResize"
     ></textarea>
     <div class="chat__options absolute inline-flex self-end">
@@ -35,7 +36,7 @@ export default {
   methods: {
     submit() {
       let input = document.querySelector(".chat__msg");
-      this.$socket.emit("chat-message", input.value);
+      this.$socket.emit("chat-message", input.value, this.$route.params.name);
       this.$emit("ping", input.value);
       input.value = "";
       this.autoResize({ target: input });

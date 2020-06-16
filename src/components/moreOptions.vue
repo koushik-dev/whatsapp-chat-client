@@ -32,9 +32,8 @@ export default {
           while (!name) {
             name = prompt("Enter group name");
           }
-
-          this.$socket.emit("add-group", name);
-          this.$router.push({ name: "Chat", params: { name } });
+          this.$socket.emit("create-group", name);
+          this.emitAndClean(name);
           break;
         case "broadcast":
           break;
@@ -47,9 +46,12 @@ export default {
         c => ["moreopts", "opt"].indexOf(c) > -1
       );
       if (!isOut) {
-        this.$emit("close", true);
-        document.removeEventListener("click", this.globalClick);
+        this.emitAndClean();
       }
+    },
+    emitAndClean(name) {
+      this.$emit("close", name);
+      document.removeEventListener("click", this.globalClick);
     }
   }
 };

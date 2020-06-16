@@ -3,8 +3,8 @@
     <header class="p-2 text-white font-medium text-xl text-left">
       <h3>Whatsapp</h3>
     </header>
-    <section class="flex">
-      <form @submit.prevent="login" :style="{ top: '50%' }" class="absolute">
+    <section class="flex justify-center items-center pt-16">
+      <form @submit.prevent="login" class="absolute">
         <input
           type="text"
           placeholder="Enter your name"
@@ -28,11 +28,16 @@ header {
 </style>
 <script>
 export default {
+  created() {
+    if(sessionStorage.getItem('user-name'))
+      this.$router.push('home');
+  },
   methods: {
     login({ target: { elements } }) {
       let name = elements[0].value;
       if (name) {
-        this.$router.push({ name: "Home", params: { name } });
+        sessionStorage.setItem('user-name', name);
+        this.$router.push({ name: "Home" });
       }
     }
   }
