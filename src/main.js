@@ -6,6 +6,7 @@ import VueSocketIO from "vue-socket.io";
 import axios from "axios";
 
 import "./assets/styles/tailwind.css";
+import store from "./store";
 
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
@@ -19,5 +20,6 @@ Vue.use(
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount("#app");

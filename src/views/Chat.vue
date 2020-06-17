@@ -9,11 +9,13 @@ export default {
     chatContainer
   },
   mounted() {
-    this.$socket.emit(
-      "join-group",
-      this.$route.params.name,
-      sessionStorage.getItem("user-name")
-    );
+    if (this.$store.getters.roomArr.indexOf(this.$route.params.name) > -1)
+      this.$socket.emit(
+        "join-group",
+        this.$route.params.name,
+        sessionStorage.getItem("user-name")
+      );
+    else this.$router.push({ name: "Home" });
   }
 };
 </script>

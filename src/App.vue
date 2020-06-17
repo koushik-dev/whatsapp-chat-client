@@ -26,3 +26,12 @@
   color: #42b983;
 }
 </style>
+<script>
+export default {
+  mounted() {
+    this.$axios.get(`${process.env.VUE_APP_BASEURL}rooms`).then(({ data }) => {
+      this.$store.commit('updateRooms', data);
+    });
+  },
+}
+</script>

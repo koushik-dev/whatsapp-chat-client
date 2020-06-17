@@ -18,15 +18,10 @@ export default {
     userCard,
     homeHeader
   },
-  data() {
-    return {
-      rooms: {}
-    };
-  },
-  mounted() {
-    this.$axios.get(`${process.env.VUE_APP_BASEURL}rooms`).then(({ data }) => {
-      this.rooms = data;
-    });
+  computed: {
+    rooms() {
+      return this.$store.state.rooms
+    }
   },
   methods: {
     groupAdd(name) {

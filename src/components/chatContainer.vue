@@ -94,7 +94,7 @@ export default {
         id: Math.random(),
         text: msg,
         timeStamp: new Date(),
-        name: 'You',
+        name: "You",
         mine: true,
         isMsg: true
       });
