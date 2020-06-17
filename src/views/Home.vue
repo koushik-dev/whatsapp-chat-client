@@ -24,7 +24,7 @@ export default {
     };
   },
   mounted() {
-    this.$axios.get(`https://vast-mesa-14194.herokuapp.com/rooms`).then(({ data }) => {
+    this.$axios.get(`${process.env.VUE_APP_BASEURL}rooms`).then(({ data }) => {
       this.rooms = data;
     });
   },

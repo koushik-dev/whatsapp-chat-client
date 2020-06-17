@@ -13,7 +13,7 @@ Vue.prototype.$axios = axios;
 Vue.use(
   new VueSocketIO({
     debug: true,
-    connection: SocketIO("https://vast-mesa-14194.herokuapp.com/")
+    connection: SocketIO(process.env.VUE_APP_BASEURL)
   })
 );
 
