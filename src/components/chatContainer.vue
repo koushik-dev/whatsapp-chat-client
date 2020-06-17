@@ -94,7 +94,7 @@ export default {
         id: Math.random(),
         text: msg,
         timeStamp: new Date(),
-        name: sessionStorage.getItem("user-name"),
+        name: 'You',
         mine: true,
         isMsg: true
       });

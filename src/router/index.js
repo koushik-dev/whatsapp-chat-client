@@ -31,4 +31,8 @@ const router = new VueRouter({
   mode: "history"
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.name !== "Login" && !sessionStorage.getItem("user-name")) next({ name: "Login" });
+  else next();
+});
 export default router;
