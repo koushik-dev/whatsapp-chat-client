@@ -8,8 +8,7 @@
       class="moreopts material-icons p-2"
       @keypress.enter="toggle"
       @click="toggle"
-      >more_vert</span
-    >
+    >more_vert</span>
     <more-options v-if="show" @close="optionClose" />
 
     <!-- pages -->
@@ -28,25 +27,19 @@
           class="flex-1 pb-2"
           @keypress.enter="activeTab(1)"
           @click="activeTab(1)"
-        >
-          {{ this.tabs[1] }}
-        </li>
+        >{{ this.tabs[1] }}</li>
         <li
           tabindex="0"
           class="flex-1 pb-2"
           @keypress.enter="activeTab(2)"
           @click="activeTab(2)"
-        >
-          {{ this.tabs[2] }}
-        </li>
+        >{{ this.tabs[2] }}</li>
         <li
           tabindex="0"
           class="flex-1 pb-2"
           @keypress.enter="activeTab(3)"
           @click="activeTab(3)"
-        >
-          {{ this.tabs[3] }}
-        </li>
+        >{{ this.tabs[3] }}</li>
       </ul>
       <div class="highlighter absolute bg-white bottom-0 h-1"></div>
     </section>

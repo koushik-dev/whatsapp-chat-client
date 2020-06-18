@@ -11,16 +11,10 @@
     <div class="chat__options absolute inline-flex self-end">
       <span class="material-icons chat__attach mr-4">attach_file</span>
       <transition name="slide-fade">
-        <span class="material-icons chat__cam mr-2" v-if="!dirty"
-          >camera_alt</span
-        >
+        <span class="material-icons chat__cam mr-2" v-if="!dirty">camera_alt</span>
       </transition>
     </div>
-    <button
-      type="submit"
-      @click.prevent="submit"
-      class="send rounded-full flex mx-1 p-2"
-    >
+    <button type="submit" @click.prevent="submit" class="send rounded-full flex mx-1 p-2">
       <span class="material-icons text-white">send</span>
     </button>
   </form>

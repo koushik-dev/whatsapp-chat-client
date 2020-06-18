@@ -5,14 +5,10 @@
     id="popup"
   >
     <li class="opt py-2 pl-3 cursor-pointer hover:bg-gray-300 pr-6">
-      <a href="javascript:void(0)" class="opt" @click="add('group')"
-        >New group</a
-      >
+      <a href="javascript:void(0)" class="opt" @click="add('group')">New group</a>
     </li>
     <li class="opt py-2 pl-3 cursor-pointer hover:bg-gray-300 pr-6">
-      <a href="javascript:void(0)" class="opt" @click="add('broadcast')"
-        >New broadcast</a
-      >
+      <a href="javascript:void(0)" class="opt" @click="add('broadcast')">New broadcast</a>
     </li>
     <li class="opt py-2 pl-3 cursor-pointer hover:bg-gray-300 pr-6">
       <a href="javascript:void(0)" class="opt">Settings</a>

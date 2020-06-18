@@ -27,11 +27,11 @@
 }
 </style>
 <script>
+import { mapActions } from "vuex";
 export default {
+  methods: mapActions(["allRooms"]),
   mounted() {
-    this.$axios.get(`${process.env.VUE_APP_BASEURL}rooms`).then(({ data }) => {
-      this.$store.commit('updateRooms', data);
-    });
-  },
-}
+    this.allRooms();
+  }
+};
 </script>

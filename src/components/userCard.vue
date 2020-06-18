@@ -1,8 +1,6 @@
 <template>
   <div class="flex items-center p-1 w-screen overflow-hidden">
-    <div class="">
-      <Avatar />
-    </div>
+    <Avatar />
     <div
       class="w-full my-1 mx-2 text-left flex-1 overflow-hidden border-gray-400 border-b border-solid text-black"
     >

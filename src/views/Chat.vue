@@ -4,12 +4,14 @@
 
 <script>
 import chatContainer from "@/components/chatContainer.vue";
+import { mapGetters } from "vuex";
 export default {
   components: {
     chatContainer
   },
+  computed: mapGetters(["roomArr"]),
   mounted() {
-    if (this.$store.getters.roomArr.indexOf(this.$route.params.name) > -1)
+    if (this.roomArr.indexOf(this.$route.params.name) > -1)
       this.$socket.emit(
         "join-group",
         this.$route.params.name,

@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 import userCard from "../components/userCard";
 import homeHeader from "../components/homeHeader";
 export default {
@@ -18,11 +19,7 @@ export default {
     userCard,
     homeHeader
   },
-  computed: {
-    rooms() {
-      return this.$store.state.rooms
-    }
-  },
+  computed: mapState(['rooms']),
   methods: {
     groupAdd(name) {
       this.rooms.push({
