@@ -38,10 +38,10 @@ export default {
       }
     },
     globalClick(e) {
-      const isOut = [...e.target.classList].some(
+      const isOpts = [...e.target.classList].some(
         c => ["moreopts", "opt"].indexOf(c) > -1
       );
-      if (!isOut) {
+      if (isOpts) {
         this.emitAndClean();
       }
     },
