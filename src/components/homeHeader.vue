@@ -27,7 +27,9 @@
           class="flex-1 pb-2"
           @keypress.enter="activeTab(1)"
           @click="activeTab(1)"
-        >{{ this.tabs[1] }}</li>
+        >{{ this.tabs[1] }}
+        <span class="bg-white h-6 inline-block rounded-full w-6 text-black mx-1">{{this.roomLen}}</span>
+        </li>
         <li
           tabindex="0"
           class="flex-1 pb-2"
@@ -59,6 +61,7 @@
 </style>
 <script>
 import moreOptions from "../components/moreOptions";
+import { mapGetters } from 'vuex';
 export default {
   components: {
     moreOptions
@@ -69,6 +72,12 @@ export default {
       tabs: ["CAM", "CHATS", "STATUS", "CALLS"],
       tab: 0
     };
+  },
+  computed: {
+    ...mapGetters(['roomArr']),
+    roomLen() {
+      return this.roomArr.length
+    }
   },
   mounted() {
     this.activeTab(1);

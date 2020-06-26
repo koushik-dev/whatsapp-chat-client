@@ -4,7 +4,7 @@
       <h3>Whatsapp</h3>
     </header>
     <section class="flex justify-center items-center pt-16">
-      <form @submit.prevent="login" class="absolute">
+      <form @submit.prevent="login" class="absolute w-3/4 max-w-xs">
         <input
           type="text"
           placeholder="Enter your name"
