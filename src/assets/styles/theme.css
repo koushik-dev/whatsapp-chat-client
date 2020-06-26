@@ -1,7 +1,11 @@
 :root {
     --app-color: #235e54;
-    --bg-color: #ece5dd;
+    --bg-color: #dddbd2;
+    --notification-color: #6be273;
     --msg-color: #dbf6c5;
+}
+html, body {
+    height: 100%;
 }
 body {
     font-family: 'poppins';

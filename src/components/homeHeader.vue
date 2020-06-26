@@ -48,6 +48,7 @@
 <style scoped>
 .header {
   background-color: var(--app-color);
+  box-shadow: 0 2px 5px black;
 }
 .section {
   flex: 1 100%;
@@ -77,7 +78,7 @@ export default {
       this.show = !this.show;
     },
     optionClose(name) {
-      this.$emit("add", name);
+      name && this.$emit("add", name);
       this.toggle();
     },
     activeTab(index) {

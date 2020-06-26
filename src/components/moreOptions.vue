@@ -1,6 +1,6 @@
 <template>
   <ul
-    class="z-10 bg-white text-black text-left absolute right-0"
+    class="z-10 bg-white text-black text-left absolute right-0 shadow-md"
     :style="{ right: '5px', top: '5px' }"
     id="popup"
   >
@@ -38,13 +38,14 @@ export default {
       }
     },
     globalClick(e) {
-      const isOpts = [...e.target.classList].some(
-        c => ["moreopts", "opt"].indexOf(c) > -1
-      );
-      if (isOpts) {
-        this.emitAndClean();
+      if ([...e.target.classList].indexOf("moreopts") === -1) {
+        const isOpts = [...e.target.classList].indexOf("opt") > -1;
+        if (!isOpts) {
+          this.emitAndClean();
+        }
       }
     },
+
     emitAndClean(name) {
       this.$emit("close", name);
       document.removeEventListener("click", this.globalClick);

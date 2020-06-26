@@ -1,22 +1,25 @@
 <template>
   <div class="home text-white">
     <home-header @add="groupAdd" />
-    <router-link
+    <div class="bg-white overflow-hidden">
+      <router-link
       :to="'/chat/' + room.name"
       v-for="(room, index) in rooms"
       :key="index"
     >
-      <user-card :room="room" />
+      <room-card :room="room" />
     </router-link>
+    </div>
+    
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
-import userCard from "../components/userCard";
+import roomCard from "../components/roomCard";
 import homeHeader from "../components/homeHeader";
 export default {
   components: {
-    userCard,
+    roomCard,
     homeHeader
   },
   computed: mapState(['rooms']),
