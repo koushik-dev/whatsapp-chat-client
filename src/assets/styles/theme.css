@@ -1,6 +1,6 @@
 :root {
     --app-color: #235e54;
-    --bg-color: #dddbd2;
+    --bg-color: #e5ddd5;
     --notification-color: #6be273;
     --msg-color: #dbf6c5;
 }
@@ -10,4 +10,5 @@ html, body {
 body {
     font-family: 'poppins';
     background-color: var(--bg-color);
+    background-image: url('../images/bg.png');
 }
