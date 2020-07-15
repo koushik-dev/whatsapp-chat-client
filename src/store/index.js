@@ -19,9 +19,7 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    roomArr: (state) => {
-      return state.rooms.map((r) => r.name);
-    },
+    roomArr: (state) => state.rooms.map((r) => r.name),
   },
   actions: {
     allRooms: async ({ commit }) => {
