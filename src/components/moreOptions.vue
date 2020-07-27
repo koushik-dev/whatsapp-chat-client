@@ -1,23 +1,27 @@
 <template>
   <ul
-    class="z-10 bg-white text-black text-left absolute right-0 shadow-md"
-    :style="{ right: '5px', top: '5px' }"
+    class="z-10 bg-white text-black text-left absolute shadow-md"
+    ref="list"
+    :style="{ top: moreData.position.top + 'px' }"
     id="popup"
   >
-    <li class="opt py-2 pl-3 cursor-pointer hover:bg-gray-300 pr-6">
-      <a href="javascript:void(0)" class="opt" @click="add('group')">New group</a>
-    </li>
-    <li class="opt py-2 pl-3 cursor-pointer hover:bg-gray-300 pr-6">
-      <a href="javascript:void(0)" class="opt" @click="add('broadcast')">New broadcast</a>
-    </li>
-    <li class="opt py-2 pl-3 cursor-pointer hover:bg-gray-300 pr-6">
-      <a href="javascript:void(0)" class="opt">Settings</a>
+    <li
+      class="opt py-2 pl-3 cursor-pointer hover:bg-gray-300 pr-6"
+      v-for="(opt, i) in moreData.options"
+      :key="i"
+    >
+      <a href="javascript:void(0)" class="opt" @click="add('group')">{{
+        opt.name
+      }}</a>
     </li>
   </ul>
 </template>
 <script>
 export default {
+  props: ["moreData"],
   mounted() {
+    this.$refs.list.style.left =
+      this.moreData.position.left - this.$el.offsetWidth + "px";
     document.addEventListener("click", this.globalClick);
   },
   methods: {

@@ -1,20 +1,33 @@
 <template>
   <div class="chat-container flex flex-col h-screen">
     <header class="chat__header flex px-1 py-2 items-center text-white">
-      <router-link to="/home" class="flex items-center" @click.native="leaveRoom">
+      <router-link
+        to="/home"
+        class="flex items-center"
+        @click.native="leaveRoom"
+      >
         <span class="material-icons">keyboard_backspace</span>
         <Avatar />
       </router-link>
 
-      <div class="header__title flex flex-col justify-start ml-2 flex-1 text-left overflow-hidden">
+      <div
+        class="header__title flex flex-col justify-start ml-2 flex-1 text-left overflow-hidden"
+      >
         <p>{{ roomName }}</p>
-        <p class="header__title__status font-light truncate">{{ displayUsers }}</p>
+        <p class="header__title__status font-light truncate">
+          {{ displayUsers }}
+        </p>
       </div>
       <span class="material-icons mx-2">call</span>
       <span class="material-icons">more_vert</span>
     </header>
     <div class="container__messages flex flex-col overflow-y-scroll h-full">
-      <component :is="component(msg.isMsg)" v-for="msg in messages" :key="msg.id" :msg="msg"></component>
+      <component
+        :is="component(msg.isMsg)"
+        v-for="msg in messages"
+        :key="msg.id"
+        :msg="msg"
+      ></component>
     </div>
     <messageForm @ping="appendMsg" />
   </div>

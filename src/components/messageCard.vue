@@ -6,19 +6,26 @@
     <header
       class="font-medium card__header"
       :class="[msg.mine ? 'text-green-600' : 'text-orange-600']"
-    >{{ msg.name }}</header>
+    >
+      {{ msg.name }}
+    </header>
     <article>{{ msg.text }}</article>
     <footer class="card__footer font-light text-right flex items-center">
       <span>
         {{
-        new Date(msg.timeStamp).toLocaleString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true
-        })
+          new Date(msg.timeStamp).toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true
+          })
         }}
       </span>
-      <span class="material-icons ml-1" v-if="msg.mine" :style="{ color: '#23b6f2' }">done_all</span>
+      <span
+        class="material-icons ml-1"
+        v-if="msg.mine"
+        :style="{ color: '#23b6f2' }"
+        >done_all</span
+      >
     </footer>
   </div>
 </template>
