@@ -7,6 +7,12 @@
   <a href="https://socket.io/" target="_blank"><img src="https://img.shields.io/badge/Socket%20Connection-Socket.io-010101?logo=socket.io"></a>
 </p>
 
+# Current Build Status
+
+<p align="center">
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e76c80ab-d636-48f6-be4d-502f96c74483/deploy-status)](https://app.netlify.com/sites/whatsapp-chat/deploys)
+</p>
+
 # Motivation
 
 In the process of learning Vue and its ecosystem, i started making a clone of whatsapp. In this clone, i also had an understanding of sockets.
