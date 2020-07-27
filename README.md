@@ -10,7 +10,7 @@
 # Current Build Status
 
 <p align="center">
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e76c80ab-d636-48f6-be4d-502f96c74483/deploy-status)](https://app.netlify.com/sites/whatsapp-chat/deploys)
+  <a href="https://app.netlify.com/sites/whatsapp-chat/deploys" target="_blank"><img src="https://api.netlify.com/api/v1/badges/e76c80ab-d636-48f6-be4d-502f96c74483/deploy-status"></a>
 </p>
 
 # Motivation
