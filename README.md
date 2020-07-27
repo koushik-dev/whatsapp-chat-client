@@ -1,7 +1,7 @@
 <h1 align="center">WhatsApp Clone - Frontend</h1>
 <p align="center">
-  <img src="https://img.shields.io/github/issues/koushik-dev/whatsapp-chat" />
-  <img src="https://img.shields.io/github/license/koushik-dev/whatsapp-chat" />
+  <img src="https://img.shields.io/github/issues/koushik-dev/whatsapp-chat-client" />
+  <img src="https://img.shields.io/github/license/koushik-dev/whatsapp-chat-client" />
   <a href="https://vuejs.org/" target="_blank"><img src="https://img.shields.io/badge/View-Vue-4FC08D.svg?logo=Vue.js"></a>
   <a href="https://tailwindcss.com/" target="_blank"><img src="https://img.shields.io/badge/UI%20Framework-Tailwind-38b2ac?logo=tailwind%20css"></a>
   <a href="https://socket.io/" target="_blank"><img src="https://img.shields.io/badge/Socket%20Connection-Socket.io-010101?logo=socket.io"></a>
