@@ -21,7 +21,8 @@
       @click.prevent="submit"
       class="send rounded-full flex mx-1 p-2"
     >
-      <span class="material-icons text-white">send</span>
+      <span class="material-icons text-white" v-if="!dirty">mic</span>
+      <span class="material-icons text-white" v-if="dirty">send</span>
     </button>
   </form>
 </template>
@@ -59,7 +60,7 @@ export default {
 </script>
 <style scoped>
 .send {
-  background-color: var(--app-color);
+  background-color: var(--app-sub-color);
 }
 .chat__msg {
   border-radius: 1.5rem;

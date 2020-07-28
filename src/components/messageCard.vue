@@ -10,8 +10,8 @@
       {{ msg.name }}
     </header>
     <article>{{ msg.text }}</article>
-    <footer class="card__footer font-light text-right flex items-center">
-      <span>
+    <footer class="card__footer font-light justify-end flex items-center">
+      <span class="text-xs">
         {{
           new Date(msg.timeStamp).toLocaleString("en-US", {
             hour: "numeric",
@@ -21,7 +21,7 @@
         }}
       </span>
       <span
-        class="material-icons ml-1"
+        class="material-icons ml-1 text-base"
         v-if="msg.mine"
         :style="{ color: '#23b6f2' }"
         >done_all</span

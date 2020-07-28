@@ -35,3 +35,7 @@ src/
 ├── store/         => contains store and its initialization
 └── views/         => represents the views in the application
 ```
+
+# Tweet
+
+https://img.shields.io/twitter/url?style=social

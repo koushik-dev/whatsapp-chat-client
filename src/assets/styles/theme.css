@@ -1,7 +1,8 @@
 :root {
-    --app-color: #235e54;
+    --app-color: #075E54;
+    --app-sub-color: #128C7E;
     --bg-color: #e5ddd5;
-    --notification-color: #6be273;
+    --notification-color: #25D366;
     --msg-color: #dbf6c5;
 }
 html, body {

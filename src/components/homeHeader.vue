@@ -10,58 +10,26 @@
       @keypress.enter="toggle"
       @click="toggle"
       ref="more"
-      >more_vert</span
-    >
-    <more-options
-      v-if="show"
-      @close="optionClose"
-      :moreData="{
-        ...moreData,
-        position: {
-          top: morePos.top + morePos.height / 2,
-          left: morePos.left + morePos.width / 2
-        }
-      }"
-    />
+    >more_vert</span>
+    <more-options v-if="show" :position="optsPos" @close="optionClose" />
 
     <!-- pages -->
     <section class="section pt-6 relative">
       <ul class="flex items-center cursor-pointer" id="pages">
         <li
           tabindex="0"
-          class="flex pb-2 px-2"
-          @keypress.enter="activeTab(0)"
-          @click="activeTab(0)"
+          :class="[i ? 'flex-1' : 'flex px-2', 'pb-2']"
+          v-for="(tab, i) in tabs"
+          :key="i"
+          @keypress.enter="activeTab(i)"
+          @click="activeTab(i)"
         >
-          <span class="material-icons items-center">camera_alt</span>
-        </li>
-        <li
-          tabindex="0"
-          class="flex-1 pb-2"
-          @keypress.enter="activeTab(1)"
-          @click="activeTab(1)"
-        >
-          {{ this.tabs[1] }}
+          {{ i ? tabs[i] : null }}
+          <span class="material-icons items-center" v-if="!i">camera_alt</span>
           <span
             class="bg-white h-6 inline-block rounded-full w-6 text-black mx-1"
-            >{{ this.roomLen }}</span
-          >
-        </li>
-        <li
-          tabindex="0"
-          class="flex-1 pb-2"
-          @keypress.enter="activeTab(2)"
-          @click="activeTab(2)"
-        >
-          {{ this.tabs[2] }}
-        </li>
-        <li
-          tabindex="0"
-          class="flex-1 pb-2"
-          @keypress.enter="activeTab(3)"
-          @click="activeTab(3)"
-        >
-          {{ this.tabs[3] }}
+            v-if="i === 1"
+          >{{ roomLen }}</span>
         </li>
       </ul>
       <div class="highlighter absolute bg-white bottom-0 h-1"></div>
@@ -82,7 +50,7 @@
 }
 </style>
 <script>
-import moreOptions from "../components/moreOptions";
+import moreOptions from "./container/homeMoreOpts";
 import { mapGetters } from "vuex";
 export default {
   components: {
@@ -93,40 +61,24 @@ export default {
       show: false,
       tabs: ["CAM", "CHATS", "STATUS", "CALLS"],
       tab: 0,
-      moreData: {
-        options: [
-          {
-            name: "New Group"
-          },
-          {
-            name: "New Broadcast"
-          },
-          {
-            name: "Settings"
-          }
-        ]
-      }
+      optsPos: {}
     };
   },
   computed: {
     ...mapGetters(["roomArr"]),
     roomLen() {
       return this.roomArr.length;
-    },
-    morePos() {
-      return this.$refs.more.getBoundingClientRect();
     }
   },
   mounted() {
     this.activeTab(1);
+
+    // To get the position of the parent for more options position
+    this.optsPos = this.$refs.more.getBoundingClientRect()
   },
   methods: {
     toggle() {
       this.show = !this.show;
-    },
-    optionClose(name) {
-      name && this.$emit("add", name);
-      this.toggle();
     },
     activeTab(index) {
       this.tab = index;
@@ -139,6 +91,10 @@ export default {
         width = parseFloat(getComputedStyle(li).width);
       el.style.left = li.offsetLeft + "px";
       el.style.width = width + "px";
+    },
+    optionClose(name) {
+      name && this.$emit("add", name);
+      this.toggle();
     }
   }
 };
