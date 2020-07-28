@@ -16,7 +16,7 @@
       class="github fixed rounded-full p-2"
     >
       <svg
-        style="height:40px"
+        style="height:30px"
         role="img"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +52,6 @@ export default {
 .github {
   background-color: var(--bg-color);
   bottom: 10px;
-  right: 20px;
+  right: 10px;
 }
 </style>

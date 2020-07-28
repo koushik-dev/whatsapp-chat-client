@@ -1,22 +1,40 @@
 <template>
   <div class="chat-container flex flex-col h-screen">
     <header class="chat__header flex px-1 py-2 items-center text-white">
-      <router-link to="/home" class="flex items-center" @click.native="leaveRoom">
+      <router-link
+        to="/home"
+        class="flex items-center"
+        @click.native="leaveRoom"
+      >
         <span class="material-icons">keyboard_backspace</span>
         <Avatar />
       </router-link>
 
-      <div class="header__title flex flex-col justify-start ml-2 flex-1 text-left overflow-hidden">
+      <div
+        class="header__title flex flex-col justify-start ml-2 flex-1 text-left overflow-hidden"
+      >
         <p class="truncate">{{ roomName }}</p>
-        <p class="header__title__status font-light truncate">{{ displayUsers }}</p>
+        <p class="header__title__status font-light truncate">
+          {{ displayUsers }}
+        </p>
       </div>
       <span class="material-icons ml-3">videocam</span>
       <span class="material-icons ml-3">call</span>
-      <span class="material-icons ml-3" ref="more">more_vert</span>
-      <more-options :position="optsPos" />
+      <span
+        class="material-icons ml-3 moreopts"
+        ref="more"
+        @click="isOption = true"
+        >more_vert</span
+      >
+      <more-options :position="optsPos" @close="optionsClose" v-if="isOption" />
     </header>
     <div class="container__messages flex flex-col overflow-y-scroll h-full">
-      <component :is="component(msg.isMsg)" v-for="msg in messages" :key="msg.id" :msg="msg"></component>
+      <component
+        :is="component(msg.isMsg)"
+        v-for="msg in messages"
+        :key="msg.id"
+        :msg="msg"
+      ></component>
     </div>
     <messageForm @ping="appendMsg" />
   </div>
@@ -40,7 +58,8 @@ export default {
     return {
       messages: [],
       roomName: "",
-      users: []
+      users: [],
+      isOption: false
     };
   },
   computed: {
@@ -51,7 +70,7 @@ export default {
   mounted() {
     this.roomName = this.$route.params.name;
     // To get the position of the parent for more options position
-    this.optsPos = this.$refs.more.getBoundingClientRect()
+    this.optsPos = this.$refs.more.getBoundingClientRect();
   },
   sockets: {
     incomingMessage(data) {
@@ -79,9 +98,11 @@ export default {
     component(isMsg) {
       return isMsg ? "messageCard" : "notificationCard";
     },
+
     leaveRoom() {
       this.$socket.emit("leave-group", this.roomName);
     },
+
     appendMsg(msg) {
       this.messages.push({
         id: Math.random(),
@@ -97,11 +118,16 @@ export default {
       }, 0);
       this.scrollToLatest();
     },
+
     scrollToLatest() {
       let el = document.querySelector(".container__messages");
       setTimeout(() => {
         el.scrollTop = el.scrollHeight;
       }, 0);
+    },
+
+    optionsClose() {
+      this.isOption = false;
     }
   }
 };

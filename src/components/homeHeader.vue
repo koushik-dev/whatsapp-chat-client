@@ -8,9 +8,10 @@
       tabindex="0"
       class="moreopts material-icons p-2"
       @keypress.enter="toggle"
-      @click="toggle"
+      @click.stop="toggle"
       ref="more"
-    >more_vert</span>
+      >more_vert</span
+    >
     <more-options v-if="show" :position="optsPos" @close="optionClose" />
 
     <!-- pages -->
@@ -29,7 +30,8 @@
           <span
             class="bg-white h-6 inline-block rounded-full w-6 text-black mx-1"
             v-if="i === 1"
-          >{{ roomLen }}</span>
+            >{{ roomLen }}</span
+          >
         </li>
       </ul>
       <div class="highlighter absolute bg-white bottom-0 h-1"></div>
@@ -60,8 +62,7 @@ export default {
     return {
       show: false,
       tabs: ["CAM", "CHATS", "STATUS", "CALLS"],
-      tab: 0,
-      optsPos: {}
+      tab: 0
     };
   },
   computed: {
@@ -74,7 +75,7 @@ export default {
     this.activeTab(1);
 
     // To get the position of the parent for more options position
-    this.optsPos = this.$refs.more.getBoundingClientRect()
+    this.optsPos = this.$refs.more.getBoundingClientRect();
   },
   methods: {
     toggle() {

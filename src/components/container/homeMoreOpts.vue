@@ -1,13 +1,14 @@
 <template>
   <more-options
+    @click="add"
     @close="optionClose"
     :moreData="{
-        ...moreData,
-        position: {
-          top: position.top + position.height / 2,
-          left: position.left + position.width / 2
-        }
-      }"
+      ...moreData,
+      position: {
+        top: position.top + position.height / 2,
+        left: position.left + position.width / 2
+      }
+    }"
   />
 </template>
 
@@ -18,6 +19,7 @@ export default {
   components: { moreOptions },
   data() {
     return {
+      name: "",
       moreData: {
         options: [
           {
@@ -34,12 +36,23 @@ export default {
     };
   },
   methods: {
-    optionClose(name) {
-      this.$emit("close", name);
+    add(type) {
+      switch (type) {
+        case this.moreData.options[0].name:
+          while (!this.name) {
+            this.name = prompt("Enter group name");
+          }
+          this.$socket.emit("create-group", this.name);
+          break;
+        default:
+          break;
+      }
+    },
+    optionClose() {
+      this.$emit("close", this.name);
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>
