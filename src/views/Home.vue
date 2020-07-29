@@ -1,7 +1,7 @@
 <template>
   <div class="home text-white h-screen overflow-y-scroll relative">
     <home-header @add="groupAdd" />
-    <div class="bg-white overflow-hidden">
+    <div class="bg-white overflow-hidden pb-16">
       <router-link
         :to="'/chat/' + room.name"
         v-for="(room, index) in rooms"

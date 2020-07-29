@@ -23,7 +23,7 @@
       <span
         class="material-icons ml-3 moreopts"
         ref="more"
-        @click="isOption = true"
+        @click.stop="isOption = true"
         >more_vert</span
       >
       <more-options :position="optsPos" @close="optionsClose" v-if="isOption" />

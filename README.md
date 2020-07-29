@@ -38,4 +38,9 @@ src/
 
 # Tweet
 
-https://img.shields.io/twitter/url?style=social
+
+Please share the project <img src="https://img.shields.io/twitter/url?style=social" />.
+
+# License
+
+It is released under [MIT License](https://opensource.org/licenses/MIT)

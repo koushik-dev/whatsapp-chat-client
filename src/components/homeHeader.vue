@@ -12,7 +12,7 @@
       ref="more"
       >more_vert</span
     >
-    <more-options v-if="show" :position="optsPos" @close="optionClose" />
+    <more-options v-if="show" :position="optsPos" @add="optionAdd" @close="optionClose" />
 
     <!-- pages -->
     <section class="section pt-6 relative">
@@ -93,8 +93,11 @@ export default {
       el.style.left = li.offsetLeft + "px";
       el.style.width = width + "px";
     },
-    optionClose(name) {
+    optionAdd(name) {
       name && this.$emit("add", name);
+    },
+
+    optionClose() {
       this.toggle();
     }
   }

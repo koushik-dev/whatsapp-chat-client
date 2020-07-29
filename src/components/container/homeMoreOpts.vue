@@ -19,7 +19,6 @@ export default {
   components: { moreOptions },
   data() {
     return {
-      name: "",
       moreData: {
         options: [
           {
@@ -37,19 +36,21 @@ export default {
   },
   methods: {
     add(type) {
+      let name;
       switch (type) {
         case this.moreData.options[0].name:
-          while (!this.name) {
-            this.name = prompt("Enter group name");
+          while (!name) {
+            name = prompt("Enter group name");
           }
-          this.$socket.emit("create-group", this.name);
+          this.$socket.emit("create-group", name);
+          this.$emit("add", name)
           break;
         default:
           break;
       }
     },
     optionClose() {
-      this.$emit("close", this.name);
+      this.$emit("close");
     }
   }
 };
