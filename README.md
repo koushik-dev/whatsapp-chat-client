@@ -39,7 +39,7 @@ src/
 # Tweet
 
 
-Please share the project <img src="https://img.shields.io/twitter/url?style=social" />.
+Please share the project <img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fkoushik-dev%2Fwhatsapp-chat-client" />.
 
 # License
 
