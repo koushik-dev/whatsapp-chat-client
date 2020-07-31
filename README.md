@@ -36,10 +36,18 @@ src/
 └── views/         => represents the views in the application
 ```
 
+## Components
+```
+components/
+├── container/     => all the container components
+├── /              => all the components of the application
+```
+
+
 # Tweet
 
 
-Please share the project <img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fkoushik-dev%2Fwhatsapp-chat-client" />.
+Please share the project <a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fkoushik-dev%2Fwhatsapp-chat-client" target="_blank"><img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fkoushik-dev%2Fwhatsapp-chat-client" alt="Twitter Image" /></a> and tag <a href="https://twitter.com/koushikrsk">@koushikrsk</a>
 
 # License
 
